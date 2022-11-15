@@ -1,5 +1,6 @@
 const express = require('express')
 const budget = require('./models/budget')
+const bodyParser = require('body-parser')
 const PORT = 3000
 
 const app = express()
@@ -13,12 +14,18 @@ app.get('/', (req, res) => {
     })
 })
 
+// New
+app.get('/budget/new', (req, res) => {
+    res.render('new.ejs')
+})
+
 // Show
 app.get('/budget/:id', (req, res) => {
     res.render('show.ejs', {
         budget: budget[req.params.id]
     })
 })
+
 
 
 
