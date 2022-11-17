@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
 const budget = require('./models/budget')
@@ -16,6 +15,9 @@ app.use('/static', express.static('public'))
 app.get('/', (req, res) => {
     res.render('index.ejs', {
         allBudget: budget,
+        total: budget.reduce(function (accumulator, item) { 
+            return accumulator + parseInt(item.amount)
+          }, 0)
     })
 })
 

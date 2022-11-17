@@ -12,6 +12,17 @@
     <div class="container">
         <h1>Budgtr ALL</h1>
         <a href="/budget/new"><button>New Item</button></a>
+        <h3 class="superman">Bank Account $<% let bankAccount = total; if(bankAccount < 0){ %>
+            <style>
+                h3 {background-color: red}
+            </style>
+            <% } else { %>
+            <style>
+                h3 {background-color: green;}
+            </style>
+            <% } %>
+          <%=bankAccount %>
+        </h3>
         <table>
             <% for(let i = 0; i < allBudget.length; i++) { %>
             <tr>
